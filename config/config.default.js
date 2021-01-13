@@ -2,6 +2,8 @@
 
 'use strict';
 
+const path = require('path');
+
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
@@ -21,6 +23,23 @@ module.exports = appInfo => {
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
+  };
+
+  config.view = {
+    defaultViewEngine: 'nunjucks',
+    mapping: {
+      '.html': 'nunjucks' //左边写成.html后缀，会自动渲染.html文件
+    },
+  };
+
+  config.security = {
+    csrf: {
+      enable: false
+    },
+  };
+
+  config.multipart = {
+    mode: 'file',
   };
 
   return {
